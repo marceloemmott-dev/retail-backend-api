@@ -12,6 +12,14 @@
 > **🚀 Este proyecto utiliza infraestructura REAL en producción**  
 > La base de datos PostgreSQL está desplegada y activa en [Neon](https://neon.tech/) (serverless cloud), no es una configuración local o de ejemplo. Esto demuestra un enfoque profesional con servicios en la nube listos para escalar.
 
+### 📚 Documentación Completa Disponible
+
+Este proyecto incluye documentación profesional detallada:
+
+- 📘 **[Guía de Configuración de Neon](./docs/NEON_SETUP.md)** - Setup paso a paso de PostgreSQL serverless
+- 🏗️ **[Arquitectura del Sistema](./docs/ARCHITECTURE.md)** - Diseño, decisiones y casos de uso
+- 📖 **[Ejemplos de API](./docs/API_EXAMPLES.md)** - Guía práctica con ejemplos reales
+
 ---
 
 ## 📖 Tabla de Contenidos
@@ -22,7 +30,7 @@
 - [🏗️ Arquitectura](#️-arquitectura)
 - [🛠️ Stack Tecnológico](#️-stack-tecnológico)
 - [🚀 Instalación y Configuración](#-instalación-y-configuración)
-  - [⚙️ Configurar Base de Datos en Neon](#️-configurar-base-de-datos-en-neon)
+- [📚 Documentación Completa](#-documentación-completa)
 - [📚 Documentación API](#-documentación-api)
 - [🗂️ Estructura del Proyecto](#️-estructura-del-proyecto)
 - [🌍 Universalidad del Sistema](#-universalidad-del-sistema)
@@ -198,88 +206,50 @@ El servidor estará disponible en: **http://localhost:8000**
 
 ---
 
-### ⚙️ Configurar Base de Datos en Neon
+---
 
-**Neon** es un servicio de PostgreSQL serverless que ofrece una capa gratuita perfecta para proyectos de portafolio y desarrollo. Aquí te explico paso a paso cómo configurarlo:
+## 📚 Documentación Completa
 
-#### 📝 Paso 1: Crear cuenta en Neon
+Para información detallada sobre el proyecto, consulta la documentación completa:
 
-1. Ve a [neon.tech](https://neon.tech/)
-2. Haz clic en **"Sign Up"** o **"Get Started"**
-3. Regístrate con tu cuenta de GitHub, Google o email
-4. Confirma tu email si es necesario
+### 📘 Guías Disponibles
 
-#### 🗄️ Paso 2: Crear un nuevo proyecto
+| Documento | Descripción | Link |
+|-----------|-------------|------|
+| **🏗️ Arquitectura** | Diseño del sistema, casos de uso, decisiones arquitectónicas | [Ver Documentación](./docs/ARCHITECTURE.md) |
+| **⚙️ Setup de Neon** | Configuración completa de PostgreSQL serverless | [Ver Guía](./docs/NEON_SETUP.md) |
+| **📖 Ejemplos de API** | Casos de uso prácticos y ejemplos de endpoints | [Ver Ejemplos](./docs/API_EXAMPLES.md) |
 
-1. Una vez dentro del dashboard, haz clic en **"Create a project"** o **"New Project"**
-2. Completa la información:
-   - **Project Name**: `retail-backend` (o el nombre que prefieras)
-   - **Region**: Elige la región más cercana a ti (ej: `US East (Ohio)`, `EU (Frankfurt)`, etc.)
-   - **PostgreSQL Version**: Deja la versión más reciente (16 o superior)
-3. Haz clic en **"Create Project"**
+### 🎯 ¿Qué encontrarás?
 
-#### 🔌 Paso 3: Obtener la Connection String
+#### En [ARCHITECTURE.md](./docs/ARCHITECTURE.md):
+- ✅ Principios de diseño del sistema
+- ✅ Modelo de dominio completo
+- ✅ **5 casos de uso detallados** (compras, ventas, stock, etc.)
+- ✅ Flujos de negocio con diagramas
+- ✅ Decisiones arquitectónicas justificadas
+- ✅ Patrones de diseño aplicados
+- ✅ Estrategias de escalabilidad
 
-1. Neon te mostrará automáticamente la **Connection String** después de crear el proyecto
-2. También puedes encontrarla en:
-   - Dashboard → Tu proyecto → **"Connection Details"** o **"Connection String"**
-3. La connection string se verá similar a esto:
+#### En [NEON_SETUP.md](./docs/NEON_SETUP.md):
+- ✅ Guía paso a paso para crear cuenta en Neon
+- ✅ Configuración completa del proyecto
+- ✅ Obtención de connection string
+- ✅ Troubleshooting común
+- ✅ Mejores prácticas de seguridad
+- ✅ Características avanzadas (branching, backups)
+- ✅ Comparación con alternativas
 
-```
-postgresql://username:password@ep-xxxxx.us-east-1.aws.neon.tech/neondb?sslmode=require
-```
+#### En [API_EXAMPLES.md](./docs/API_EXAMPLES.md):
+- ✅ Ejemplos de autenticación
+- ✅ CRUD completo de productos
+- ✅ Gestión de compras y ventas
+- ✅ Reportes y analytics
+- ✅ **3 escenarios completos de uso**
+- ✅ Códigos de error y soluciones
+- ✅ Mejores prácticas de consumo
 
-> ⚠️ **Importante:** Guarda esta connection string de forma segura, la necesitarás para conectar tu aplicación.
-
-#### 🔐 Paso 4: Copiar al archivo `.env`
-
-1. Abre tu archivo `.env` en el proyecto
-2. Reemplaza el valor de `DATABASE_URL` con tu connection string de Neon:
-
-```env
-ENV=development
-DEBUG=true
-DATABASE_URL=postgresql://username:password@ep-xxxxx.us-east-1.aws.neon.tech/neondb?sslmode=require
-```
-
-3. Asegúrate de que incluya `?sslmode=require` al final
-
-#### ✅ Paso 5: Verificar la conexión
-
-Puedes probar la conexión usando el script incluido:
-
-```bash
-python test_db.py
-```
-
-Si todo está bien configurado, deberías ver:
-
-```
-✅ Conexión exitosa a la base de datos
-Versión de PostgreSQL: PostgreSQL 16.x ...
-```
-
-#### 📊 Paso 6 (Opcional): Explorar la base de datos
-
-Neon incluye un **SQL Editor** integrado donde puedes:
-- Ejecutar queries SQL
-- Ver tablas y esquemas
-- Monitorear el uso de recursos
-- Revisar logs de conexiones
-
-Para acceder: Dashboard → Tu proyecto → **"SQL Editor"**
-
-#### 💰 Capa Gratuita de Neon
-
-La capa gratuita de Neon incluye:
-- ✅ **1 proyecto**
-- ✅ **10 branches** (ideal para desarrollo)
-- ✅ **3 GB de almacenamiento**
-- ✅ **Sin límite de queries**
-- ✅ **Backups automáticos**
-- ✅ **Escalado automático**
-
-Perfecto para proyectos de portafolio y desarrollo. 🚀
+> 💡 **Tip**: Empieza por [ARCHITECTURE.md](./docs/ARCHITECTURE.md) para entender el diseño del sistema.
 
 ---
 
