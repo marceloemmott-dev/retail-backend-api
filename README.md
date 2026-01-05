@@ -23,6 +23,7 @@ Este proyecto incluye documentación profesional detallada:
 - 📘 **[Guía de Configuración de Neon](./docs/NEON_SETUP.md)** - Setup paso a paso de PostgreSQL serverless
 - 🏗️ **[Arquitectura del Sistema](./docs/ARCHITECTURE.md)** - Diseño, decisiones y casos de uso
 - 📖 **[Ejemplos de API](./docs/API_EXAMPLES.md)** - Guía práctica con ejemplos reales
+- 🪝 **[Pre-commit Hooks](./docs/PRECOMMIT.md)** - Automatización de calidad antes de cada commit
 
 ---
 
@@ -223,6 +224,8 @@ Para información detallada sobre el proyecto, consulta la documentación comple
 | **🏗️ Arquitectura** | Diseño del sistema, casos de uso, decisiones arquitectónicas | [Ver Documentación](./docs/ARCHITECTURE.md) |
 | **⚙️ Setup de Neon** | Configuración completa de PostgreSQL serverless | [Ver Guía](./docs/NEON_SETUP.md) |
 | **📖 Ejemplos de API** | Casos de uso prácticos y ejemplos de endpoints | [Ver Ejemplos](./docs/API_EXAMPLES.md) |
+| **🪝 Pre-commit Hooks** | Automatización de calidad antes de cada commit | [Ver Guía](./docs/PRECOMMIT.md) |
+| **🔄 CI/CD** | Workflows de GitHub Actions y automatización | [Ver Documentación](./docs/CICD.md) |
 
 ### 🎯 ¿Qué encontrarás?
 
@@ -252,6 +255,22 @@ Para información detallada sobre el proyecto, consulta la documentación comple
 - ✅ **3 escenarios completos de uso**
 - ✅ Códigos de error y soluciones
 - ✅ Mejores prácticas de consumo
+
+#### En [PRECOMMIT.md](./docs/PRECOMMIT.md):
+- ✅ Qué son y por qué usar pre-commit hooks
+- ✅ Instalación paso a paso
+- ✅ **15 hooks configurados** (Black, isort, flake8, mypy, etc.)
+- ✅ Uso diario y comandos útiles
+- ✅ Solución de problemas comunes
+- ✅ Mejores prácticas y configuración avanzada
+
+#### En [CICD.md](./docs/CICD.md):
+- ✅ Explicación completa de CI/CD
+- ✅ **3 workflows configurados**
+- ✅ Cómo ejecutar checks localmente
+- ✅ Troubleshooting de failures
+- ✅ Configuración de herramientas
+- ✅ Beneficios para portafolio
 
 > 💡 **Tip**: Empieza por [ARCHITECTURE.md](./docs/ARCHITECTURE.md) para entender el diseño del sistema.
 
