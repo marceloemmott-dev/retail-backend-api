@@ -8,6 +8,10 @@
 [![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-ORM-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white)](https://www.sqlalchemy.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
+> [!IMPORTANT]
+> **🚀 Este proyecto utiliza infraestructura REAL en producción**  
+> La base de datos PostgreSQL está desplegada y activa en [Neon](https://neon.tech/) (serverless cloud), no es una configuración local o de ejemplo. Esto demuestra un enfoque profesional con servicios en la nube listos para escalar.
+
 ---
 
 ## 📖 Tabla de Contenidos
@@ -18,6 +22,7 @@
 - [🏗️ Arquitectura](#️-arquitectura)
 - [🛠️ Stack Tecnológico](#️-stack-tecnológico)
 - [🚀 Instalación y Configuración](#-instalación-y-configuración)
+  - [⚙️ Configurar Base de Datos en Neon](#️-configurar-base-de-datos-en-neon)
 - [📚 Documentación API](#-documentación-api)
 - [🗂️ Estructura del Proyecto](#️-estructura-del-proyecto)
 - [🌍 Universalidad del Sistema](#-universalidad-del-sistema)
@@ -136,10 +141,12 @@ Esto permite que el sistema sea **escalable, mantenible y profesional**, incluso
 
 ## 🚀 Instalación y Configuración
 
+> **💡 Nota importante:** Este proyecto está configurado para usar **PostgreSQL en Neon** (base de datos serverless en la nube). A continuación se incluyen instrucciones completas para que puedas configurar tu propia instancia.
+
 ### Prerequisitos
 
 - Python 3.11 o superior
-- PostgreSQL (local o cuenta en [Neon](https://neon.tech/))
+- Cuenta gratuita en [Neon](https://neon.tech/) (recomendado) o PostgreSQL local
 - Git
 
 ### ⚙️ Ejecución Local (Desarrollo)
@@ -176,10 +183,10 @@ Crear archivo `.env` basado en `.env.example`:
 ```env
 ENV=development
 DEBUG=true
-DATABASE_URL=postgresql://user:password@host/database?sslmode=require
+DATABASE_URL=postgresql://user:password@ep-xxxxx.us-east-1.aws.neon.tech/neondb?sslmode=require
 ```
 
-> 💡 **Nota:** Para usar Neon, copia la connection string desde tu panel de Neon
+> 💡 **Importante:** Necesitas tu propia connection string de Neon. Sigue la guía a continuación para obtenerla.
 
 #### 5️⃣ Levantar el servidor
 
@@ -188,6 +195,91 @@ uvicorn app.main:app --reload
 ```
 
 El servidor estará disponible en: **http://localhost:8000**
+
+---
+
+### ⚙️ Configurar Base de Datos en Neon
+
+**Neon** es un servicio de PostgreSQL serverless que ofrece una capa gratuita perfecta para proyectos de portafolio y desarrollo. Aquí te explico paso a paso cómo configurarlo:
+
+#### 📝 Paso 1: Crear cuenta en Neon
+
+1. Ve a [neon.tech](https://neon.tech/)
+2. Haz clic en **"Sign Up"** o **"Get Started"**
+3. Regístrate con tu cuenta de GitHub, Google o email
+4. Confirma tu email si es necesario
+
+#### 🗄️ Paso 2: Crear un nuevo proyecto
+
+1. Una vez dentro del dashboard, haz clic en **"Create a project"** o **"New Project"**
+2. Completa la información:
+   - **Project Name**: `retail-backend` (o el nombre que prefieras)
+   - **Region**: Elige la región más cercana a ti (ej: `US East (Ohio)`, `EU (Frankfurt)`, etc.)
+   - **PostgreSQL Version**: Deja la versión más reciente (16 o superior)
+3. Haz clic en **"Create Project"**
+
+#### 🔌 Paso 3: Obtener la Connection String
+
+1. Neon te mostrará automáticamente la **Connection String** después de crear el proyecto
+2. También puedes encontrarla en:
+   - Dashboard → Tu proyecto → **"Connection Details"** o **"Connection String"**
+3. La connection string se verá similar a esto:
+
+```
+postgresql://username:password@ep-xxxxx.us-east-1.aws.neon.tech/neondb?sslmode=require
+```
+
+> ⚠️ **Importante:** Guarda esta connection string de forma segura, la necesitarás para conectar tu aplicación.
+
+#### 🔐 Paso 4: Copiar al archivo `.env`
+
+1. Abre tu archivo `.env` en el proyecto
+2. Reemplaza el valor de `DATABASE_URL` con tu connection string de Neon:
+
+```env
+ENV=development
+DEBUG=true
+DATABASE_URL=postgresql://username:password@ep-xxxxx.us-east-1.aws.neon.tech/neondb?sslmode=require
+```
+
+3. Asegúrate de que incluya `?sslmode=require` al final
+
+#### ✅ Paso 5: Verificar la conexión
+
+Puedes probar la conexión usando el script incluido:
+
+```bash
+python test_db.py
+```
+
+Si todo está bien configurado, deberías ver:
+
+```
+✅ Conexión exitosa a la base de datos
+Versión de PostgreSQL: PostgreSQL 16.x ...
+```
+
+#### 📊 Paso 6 (Opcional): Explorar la base de datos
+
+Neon incluye un **SQL Editor** integrado donde puedes:
+- Ejecutar queries SQL
+- Ver tablas y esquemas
+- Monitorear el uso de recursos
+- Revisar logs de conexiones
+
+Para acceder: Dashboard → Tu proyecto → **"SQL Editor"**
+
+#### 💰 Capa Gratuita de Neon
+
+La capa gratuita de Neon incluye:
+- ✅ **1 proyecto**
+- ✅ **10 branches** (ideal para desarrollo)
+- ✅ **3 GB de almacenamiento**
+- ✅ **Sin límite de queries**
+- ✅ **Backups automáticos**
+- ✅ **Escalado automático**
+
+Perfecto para proyectos de portafolio y desarrollo. 🚀
 
 ---
 
