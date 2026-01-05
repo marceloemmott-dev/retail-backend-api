@@ -1,0 +1,16 @@
+# Gitleaks ignore file
+# Ignora detección de secretos en archivos de documentación
+
+# Archivos de documentación con ejemplos
+docs/API_EXAMPLES.md
+docs/NEON_SETUP.md
+docs/ARCHITECTURE.md
+docs/CICD.md
+docs/PRECOMMIT.md
+
+# README también tiene ejemplos
+README.md
+
+# Archivos de tests (cuando los crees)
+tests/**
+**/*test*.py
