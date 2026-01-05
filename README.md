@@ -8,6 +8,10 @@
 [![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-ORM-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white)](https://www.sqlalchemy.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
+[![CI](https://github.com/marceloemmott-dev/retail-backend-api/actions/workflows/ci.yml/badge.svg)](https://github.com/marceloemmott-dev/retail-backend-api/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/marceloemmott-dev/retail-backend-api/actions/workflows/codeql.yml/badge.svg)](https://github.com/marceloemmott-dev/retail-backend-api/actions/workflows/codeql.yml)
+[![Dependency Review](https://github.com/marceloemmott-dev/retail-backend-api/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/marceloemmott-dev/retail-backend-api/actions/workflows/dependency-review.yml)
+
 > [!IMPORTANT]
 > **🚀 Este proyecto utiliza infraestructura REAL en producción**  
 > La base de datos PostgreSQL está desplegada y activa en [Neon](https://neon.tech/) (serverless cloud), no es una configuración local o de ejemplo. Esto demuestra un enfoque profesional con servicios en la nube listos para escalar.

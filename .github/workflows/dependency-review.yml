@@ -1,0 +1,38 @@
+name: Dependency Review
+
+on:
+  pull_request:
+    paths:
+      - "requirements.txt"
+  schedule:
+    # Runs every Monday at 9 AM UTC
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+
+jobs:
+  dependency-review:
+    name: Review Dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 📦 Install pip-audit
+        run: |
+          python -m pip install --upgrade pip
+          pip install pip-audit
+
+      - name: 🔍 Audit dependencies for vulnerabilities
+        run: |
+          pip-audit --requirement requirements.txt || true
+
+      - name: 📋 List outdated packages
+        run: |
+          pip install -r requirements.txt
+          pip list --outdated
