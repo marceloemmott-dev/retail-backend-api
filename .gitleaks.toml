@@ -1,0 +1,20 @@
+# Gitleaks configuration
+# Ignora detecciones en archivos de documentación con ejemplos
+
+title = "Gitleaks Config for Retail Backend API"
+
+[allowlist]
+  description = "Allowlist for documentation examples"
+  
+  # Ignora archivos de documentación completos
+  paths = [
+    '''docs/.*\.md''',
+    '''README\.md''',
+    '''tests/.*''',
+  ]
+  
+  # También puedes ignorar por regex de contenido
+  regexes = [
+    # Ignora ejemplos de tokens JWT ficticios
+    '''eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9''',
+  ]
