@@ -147,7 +147,7 @@ Esto permite que el sistema sea **escalable, mantenible y profesional**, incluso
 #### 1️⃣ Clonar el repositorio
 
 ```bash
-git clone https://github.com/marceloemmott/retail-backend-api.git
+git clone https://github.com/marceloemmott-dev/retail-backend-api.git
 cd retail-backend-api
 ```
 
@@ -322,8 +322,8 @@ Desarrollado con ❤️ como proyecto de portafolio profesional
 
 **Marcelo Emmott Sanchez**
 
-[![GitHub](https://img.shields.io/badge/GitHub-marceloemmott-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/marceloemmott)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Marcelo%20Emmott-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marcelo-emmott)
+[![GitHub](https://img.shields.io/badge/GitHub-marceloemmott--dev-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/marceloemmott-dev)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Marcelo%20Emmott%20Sanchez-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marcelo-emmott-sanchez-75475939b/)
 
 ---
 
@@ -347,10 +347,10 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE)
 ### ⭐ Si este proyecto te fue útil, considera darle una estrella en GitHub ⭐
 
 **¿Tienes sugerencias o encontraste un bug?**  
-[Abre un issue](https://github.com/marceloemmott/retail-backend-api/issues) o envía un pull request
+[Abre un issue](https://github.com/marceloemmott-dev/retail-backend-api/issues) o envía un pull request
 
 ---
 
-Hecho con 💻 y ☕ por [Marcelo Emmott](https://github.com/marceloemmott)
+Hecho con 💻 y ☕ por [Marcelo Emmott](https://github.com/marceloemmott-dev)
 
 </div>
