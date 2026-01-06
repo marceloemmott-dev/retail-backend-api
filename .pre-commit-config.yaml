@@ -8,7 +8,6 @@ repos:
     hooks:
       - id: black
         name: 🎨 Format code with Black
-        language_version: python3.11
         args: [--line-length=127]
 
   # isort - Import sorter
@@ -58,7 +57,7 @@ repos:
 
 # Configuration
 default_language_version:
-  python: python3.11
+  python: python3
 
 # Skip certain hooks on specific files/dirs
 exclude: |
