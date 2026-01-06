@@ -146,9 +146,20 @@ Esto permite que el sistema sea **escalable, mantenible y profesional**, incluso
 | **[SQLAlchemy](https://www.sqlalchemy.org/)** | ORM para manejo de la base de datos |
 | **[PostgreSQL](https://www.postgresql.org/)** | Base de datos relacional |
 | **[Neon](https://neon.tech/)** | PostgreSQL serverless en la nube |
+| **[Alembic](https://alembic.sqlalchemy.org/)** | Herramienta de migraciones de base de datos |
 | **[Pydantic](https://docs.pydantic.dev/)** | Validación de datos y schemas |
 | **[Uvicorn](https://www.uvicorn.org/)** | Servidor ASGI de alto rendimiento |
 | **[Swagger/OpenAPI](https://swagger.io/)** | Documentación automática de la API |
+
+### Herramientas de Desarrollo
+
+| Herramienta | Propósito |
+|-------------|-----------|
+| **[Pre-commit](https://pre-commit.com/)** | Hooks automáticos para calidad de código |
+| **[Black](https://black.readthedocs.io/)** | Formateador de código Python |
+| **[isort](https://pycqa.github.io/isort/)** | Ordenador de imports |
+| **[flake8](https://flake8.pycqa.org/)** | Linter de código |
+| **[pytest](https://pytest.org/)** | Framework de testing |
 
 ---
 
@@ -185,11 +196,34 @@ source venv/bin/activate
 
 #### 3️⃣ Instalar dependencias
 
+**Para desarrollo (recomendado):**
+
 ```bash
+# Instala todo: FastAPI, testing, linting, pre-commit, etc.
+pip install -r requirements-dev.txt
+```
+
+**Solo para producción:**
+
+```bash
+# Instala solo lo esencial
 pip install -r requirements.txt
 ```
 
-#### 4️⃣ Configurar variables de entorno
+#### 4️⃣ Instalar Pre-commit Hooks (Opcional pero recomendado)
+
+```bash
+# Instalar hooks para verificación automática de código
+pre-commit install
+
+# (Opcional) Ejecutar en todos los archivos ahora
+pre-commit run --all-files
+```
+
+> 💡 **Tip:** Los pre-commit hooks verificarán tu código automáticamente antes de cada commit.
+> Ver [documentación completa de pre-commit](./docs/PRECOMMIT.md).
+
+#### 5️⃣ Configurar variables de entorno
 
 Crear archivo `.env` basado en `.env.example`:
 
