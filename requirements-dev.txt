@@ -1,0 +1,37 @@
+# ==============================================================================
+# RETAIL BACKEND API - DEVELOPMENT REQUIREMENTS
+# ==============================================================================
+# Herramientas solo para desarrollo/testing
+# Instalar con: pip install -r requirements-dev.txt
+
+# Incluir requirements base
+-r requirements.txt
+
+# ------------------------------------------------------------------------------
+# Code Quality & Formatting
+# ------------------------------------------------------------------------------
+black==24.10.0             # Formateador de código
+isort==5.13.2              # Ordenador de imports
+flake8==7.1.1              # Linter
+mypy==1.11.2               # Type checker
+pre-commit==4.0.0          # Pre-commit hooks
+
+# ------------------------------------------------------------------------------
+# Testing
+# ------------------------------------------------------------------------------
+pytest==8.3.4              # Framework de testing
+pytest-cov==6.0.0          # Coverage para pytest
+pytest-asyncio==0.24.0     # Testing asíncrono
+httpx==0.28.1              # Cliente HTTP para tests
+
+# ------------------------------------------------------------------------------
+# Development Server
+# ------------------------------------------------------------------------------
+watchfiles==1.0.3          # Auto-reload para desarrollo
+
+# ------------------------------------------------------------------------------
+# Database Tools
+# ------------------------------------------------------------------------------
+# pgcli==4.0.0             # CLI interactivo para PostgreSQL (opcional)
+
+# ==============================================================================

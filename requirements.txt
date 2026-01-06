@@ -1,6 +1,52 @@
-fastapi
-uvicorn[standard]
-sqlalchemy
-psycopg2-binary
-python-dotenv
-pydantic-settings
+# ==============================================================================
+# RETAIL BACKEND API - REQUIREMENTS
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Core Framework
+# ------------------------------------------------------------------------------
+fastapi==0.115.0           # Framework web moderno y rápido
+uvicorn[standard]==0.32.0  # Servidor ASGI para FastAPI
+pydantic==2.10.0           # Validación de datos
+pydantic-settings==2.6.0   # Gestión de configuración
+
+# ------------------------------------------------------------------------------
+# Database & ORM
+# ------------------------------------------------------------------------------
+sqlalchemy==2.0.35         # ORM para Python
+psycopg2-binary==2.9.10    # Driver de PostgreSQL
+alembic==1.14.0           # Migraciones de base de datos
+
+# ------------------------------------------------------------------------------
+# Environment & Configuration
+# ------------------------------------------------------------------------------
+python-dotenv==1.0.1       # Cargar variables de entorno desde .env
+
+# ------------------------------------------------------------------------------
+# Development Tools (opcional en producción)
+# ------------------------------------------------------------------------------
+# Pre-commit hooks tools (se instalan separadamente con pre-commit install)
+# black==24.10.0
+# isort==5.13.2
+# flake8==7.1.1
+
+# Herramientas de testing (descomentar cuando agregues tests)
+# pytest==8.3.4
+# pytest-cov==6.0.0
+# httpx==0.28.1  # Cliente HTTP para tests de FastAPI
+
+# ------------------------------------------------------------------------------
+# Security & Monitoring (para futuro)
+# ------------------------------------------------------------------------------
+# python-jose[cryptography]==3.3.0  # JWT tokens
+# passlib[bcrypt]==1.7.4            # Hash de passwords
+# python-multipart==0.0.17          # Para form data
+
+# ------------------------------------------------------------------------------
+# NOTAS:
+# ------------------------------------------------------------------------------
+# - Instalar: pip install -r requirements.txt
+# - Actualizar: pip install --upgrade -r requirements.txt
+# - Freeze: pip freeze > requirements-freeze.txt
+# - Pre-commit se instala aparte: pip install pre-commit && pre-commit install
+# ==============================================================================
