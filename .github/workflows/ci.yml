@@ -2,9 +2,9 @@ name: CI - Python Tests & Quality
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, develop, feature/brand]
   pull_request:
-    branches: [main]
+    branches: [main, feature/brand]
 
 jobs:
   test:
