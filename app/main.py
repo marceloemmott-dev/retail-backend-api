@@ -6,6 +6,7 @@ de Swagger/OpenAPI para documentación interactiva.
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from app.core.database import create_tables
 
 # Metadata para documentación Swagger/OpenAPI
