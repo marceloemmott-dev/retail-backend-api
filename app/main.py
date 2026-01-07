@@ -6,6 +6,7 @@ de Swagger/OpenAPI para documentación interactiva.
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.core.database import create_tables
 
 # Metadata para documentación Swagger/OpenAPI
 tags_metadata = [
@@ -113,3 +114,7 @@ def detailed_health():
         "database": "connected",  # TODO: Verificar conexión real
         "uptime": "running",
     }
+
+@app.on_event("startup")
+def on_startup():
+    create_tables()

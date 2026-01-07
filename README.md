@@ -169,9 +169,11 @@ Esto permite que el sistema sea **escalable, mantenible y profesional**, incluso
 
 ### Prerequisitos
 
-- Python 3.11 o superior
+- **Python 3.12** (específico - requerido para SQLAlchemy 2.0)
 - Cuenta gratuita en [Neon](https://neon.tech/) (recomendado) o PostgreSQL local
 - Git
+
+> ⚠️ **Importante:** Este proyecto requiere **Python 3.12 específicamente** debido a compatibilidades con SQLAlchemy 2.0 y Pydantic Settings. Si tienes múltiples versiones de Python instaladas, asegúrate de usar 3.12 al crear el entorno virtual.
 
 ### ⚙️ Ejecución Local (Desarrollo)
 
@@ -182,16 +184,39 @@ git clone https://github.com/marceloemmott-dev/retail-backend-api.git
 cd retail-backend-api
 ```
 
-#### 2️⃣ Crear entorno virtual
+#### 2️⃣ Crear entorno virtual con Python 3.12
+
+**Si tienes múltiples versiones de Python:**
+
+```bash
+# Windows - Usar Python 3.12 específicamente
+py -3.12 -m venv venv
+
+# Linux/Mac - Asegúrate de usar Python 3.12
+python3.12 -m venv venv
+```
+
+**Si solo tienes Python 3.12:**
 
 ```bash
 python -m venv venv
+```
 
+**Activar el entorno virtual:**
+
+```bash
 # Windows
 venv\Scripts\activate
 
 # Linux/Mac
 source venv/bin/activate
+```
+
+**Verificar la versión (importante):**
+
+```bash
+python --version
+# Debe mostrar: Python 3.12.x
 ```
 
 #### 3️⃣ Instalar dependencias
