@@ -271,11 +271,11 @@ sequenceDiagram
 
 ## 🏷️ Entidades del Sistema
 
-### ✅ Brand (Marca) - IMPLEMENTADO
+### ✅ Brand (Marca) - MODELO IMPLEMENTADO
 
-La primera entidad implementada del sistema. Representa las marcas comerciales de los productos.
+La primera entidad del sistema. **Estado actual: Solo modelo de base de datos, endpoints pendientes.**
 
-**📋 Modelo SQLAlchemy:**
+**📋 Modelo SQLAlchemy (✅ IMPLEMENTADO):**
 
 ```python
 class Brand(Base):
@@ -285,17 +285,29 @@ class Brand(Base):
     name = Column(String(100), nullable=False, unique=True)
 ```
 
-**🔗 Endpoints Disponibles:**
+**✅ Lo que YA está:**
+- ✅ Modelo SQLAlchemy definido
+- ✅ Tabla creada automáticamente en startup
+- ✅ Validaciones (unique, nullable)
+- ✅ Integrado con el sistema
 
-| Método | Endpoint | Descripción |
-|--------|----------|-------------|
-| `GET` | `/brands` | Listar todas las marcas |
-| `POST` | `/brands` | Crear nueva marca |
-| `GET` | `/brand/{id}` | Obtener marca por ID |
-| `PUT` | `/brands/{id}` | Actualizar marca |
-| `DELETE` | `/brands/{id}` | Eliminar marca |
+**🔜 Lo que FALTA (próximos pasos):**
+- 🔜 Schemas Pydantic (request/response)
+- 🔜 Router con endpoints REST
+- 🔜 CRUD operations
+- 🔜 Validaciones de negocio
 
-**💡 Ejemplo de Uso:**
+**🎯 Endpoints Planificados:**
+
+| Método | Endpoint | Descripción | Estado |
+|--------|----------|-------------|--------|
+| `GET` | `/brands` | Listar todas las marcas | 🔜 Pendiente |
+| `POST` | `/brands` | Crear nueva marca | 🔜 Pendiente |
+| `GET` | `/brands/{id}` | Obtener marca por ID | 🔜 Pendiente |
+| `PUT` | `/brands/{id}` | Actualizar marca | 🔜 Pendiente |
+| `DELETE` | `/brands/{id}` | Eliminar marca | 🔜 Pendiente |
+
+**💡 Ejemplo de Uso (Cuando esté implementado):**
 
 ```json
 POST /brands
@@ -372,11 +384,11 @@ gantt
 | Tecnología | Descripción |
 |------------|-------------|
 | **[FastAPI](https://fastapi.tiangolo.com/)** | Framework moderno y de alto rendimiento para construir APIs |
-| **[Python 3.11+](https://www.python.org/)** | Lenguaje de programación principal |
+| **[Python 3.12](https://www.python.org/)** | Lenguaje de programación principal (versión específica requerida) |
 | **[SQLAlchemy](https://www.sqlalchemy.org/)** | ORM para manejo de la base de datos |
 | **[PostgreSQL](https://www.postgresql.org/)** | Base de datos relacional |
 | **[Neon](https://neon.tech/)** | PostgreSQL serverless en la nube |
-| **[Alembic](https://alembic.sqlalchemy.org/)** | Herramienta de migraciones de base de datos |
+| **[Alembic](https://alembic.sqlalchemy.org/)** | 🔜 **Planificado** - Migraciones de base de datos |
 | **[Pydantic](https://docs.pydantic.dev/)** | Validación de datos y schemas |
 | **[Uvicorn](https://www.uvicorn.org/)** | Servidor ASGI de alto rendimiento |
 | **[Swagger/OpenAPI](https://swagger.io/)** | Documentación automática de la API |
