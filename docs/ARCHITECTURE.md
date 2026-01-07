@@ -118,16 +118,16 @@ class ProductService:
         # 1. Validaciones de negocio
         if self.exists_by_barcode(db, product_data.barcode):
             raise ProductAlreadyExistsError()
-        
+
         # 2. Aplicar reglas
         if product_data.price <= 0:
             raise InvalidPriceError()
-        
+
         # 3. Persistir
         db_product = Product(**product_data.dict())
         db.add(db_product)
         db.commit()
-        
+
         return db_product
 ```
 
@@ -147,12 +147,12 @@ class ProductService:
 # Ejemplo conceptual
 class Product(Base):
     __tablename__ = "products"
-    
+
     id = Column(Integer, primary_key=True)
     name = Column(String(200), nullable=False)
     barcode = Column(String(50), unique=True, index=True)
     brand_id = Column(Integer, ForeignKey("brands.id"))
-    
+
     # Relaciones
     brand = relationship("Brand", back_populates="products")
     stock_movements = relationship("StockMovement")
@@ -178,7 +178,7 @@ class ProductResponse(ProductBase):
     id: int
     brand: BrandResponse
     created_at: datetime
-    
+
     class Config:
         orm_mode = True
 ```
@@ -249,7 +249,7 @@ Purchase → Provider (Distribuidora XYZ que vende Coca-Cola)
 
 ### 📍 Caso de Uso 1: Registro de Nueva Compra
 
-**Actor**: Dueño/Administrador  
+**Actor**: Dueño/Administrador
 **Objetivo**: Registrar compra de mercadería a un proveedor
 
 **Flujo Principal:**
@@ -276,7 +276,7 @@ Purchase → Provider (Distribuidora XYZ que vende Coca-Cola)
 
 ### 📍 Caso de Uso 2: Venta en POS
 
-**Actor**: Cajero  
+**Actor**: Cajero
 **Objetivo**: Registrar venta de productos a un cliente
 
 **Flujo Principal:**
@@ -306,7 +306,7 @@ Purchase → Provider (Distribuidora XYZ que vende Coca-Cola)
 
 ### 📍 Caso de Uso 3: Actualización de Precio
 
-**Actor**: Dueño/Administrador  
+**Actor**: Dueño/Administrador
 **Objetivo**: Actualizar precio de venta de un producto
 
 **Flujo Principal:**
@@ -337,7 +337,7 @@ class SaleDetail:
 
 ### 📍 Caso de Uso 4: Consulta de Stock
 
-**Actor**: Dueño/Empleado  
+**Actor**: Dueño/Empleado
 **Objetivo**: Ver stock actual de productos
 
 **Flujo Principal:**
@@ -362,7 +362,7 @@ class SaleDetail:
 
 ### 📍 Caso de Uso 5: Reporte de Ventas
 
-**Actor**: Dueño  
+**Actor**: Dueño
 **Objetivo**: Analizar ventas por período
 
 **Flujo Principal:**
@@ -445,35 +445,35 @@ class SaleDetail:
 
 ### ¿Por qué FastAPI?
 
-✅ **Alto rendimiento**: Basado en Starlette + Pydantic  
-✅ **Type hints nativos**: Validación automática  
-✅ **Async/await**: Concurrencia moderna  
-✅ **Documentación automática**: Swagger out-of-the-box  
-✅ **Comunidad activa**: Amplio ecosistema  
+✅ **Alto rendimiento**: Basado en Starlette + Pydantic
+✅ **Type hints nativos**: Validación automática
+✅ **Async/await**: Concurrencia moderna
+✅ **Documentación automática**: Swagger out-of-the-box
+✅ **Comunidad activa**: Amplio ecosistema
 
 ### ¿Por qué PostgreSQL?
 
-✅ **Relacional**: Perfecto para datos estructurados  
-✅ **ACID compliant**: Transacciones confiables  
-✅ **Maduro y probado**: Usado en Fortune 500  
-✅ **JSON support**: Flexibilidad cuando se necesita  
-✅ **Open source**: Sin vendor lock-in  
+✅ **Relacional**: Perfecto para datos estructurados
+✅ **ACID compliant**: Transacciones confiables
+✅ **Maduro y probado**: Usado en Fortune 500
+✅ **JSON support**: Flexibilidad cuando se necesita
+✅ **Open source**: Sin vendor lock-in
 
 ### ¿Por qué Neon?
 
-✅ **Serverless**: Zero configuración  
-✅ **Free tier generoso**: Perfecto para portafolios  
-✅ **Branching**: Desarrollo aislado  
-✅ **Auto-scaling**: Crece con el proyecto  
-✅ **Backups automáticos**: Seguridad incluida  
+✅ **Serverless**: Zero configuración
+✅ **Free tier generoso**: Perfecto para portafolios
+✅ **Branching**: Desarrollo aislado
+✅ **Auto-scaling**: Crece con el proyecto
+✅ **Backups automáticos**: Seguridad incluida
 
 ### ¿Por qué SQLAlchemy?
 
-✅ **ORM maduro**: Battle-tested  
-✅ **Migraciones**: Via Alembic  
-✅ **Type safety**: Con Python types  
-✅ **Relaciones complejas**: Bien soportadas  
-✅ **Raw SQL cuando sea necesario**: Flexibilidad  
+✅ **ORM maduro**: Battle-tested
+✅ **Migraciones**: Via Alembic
+✅ **Type safety**: Con Python types
+✅ **Relaciones complejas**: Bien soportadas
+✅ **Raw SQL cuando sea necesario**: Flexibilidad
 
 ---
 
@@ -500,7 +500,7 @@ Encapsular lógica de negocio:
 class ProductService:
     def __init__(self, repository):
         self.repo = repository
-    
+
     def create_with_validation(self, data):
         # Lógica de negocio aquí
         pass
@@ -573,16 +573,16 @@ FASE 4: Microservicios (si es necesario)
 
 ## Próximos Pasos
 
-✅ Entiendes la arquitectura  
-➡️ Ver [Configuración de Neon](./NEON_SETUP.md)  
-➡️ Ver [Ejemplos de API](./API_EXAMPLES.md)  
-➡️ Volver al [README principal](../README.md)  
+✅ Entiendes la arquitectura
+➡️ Ver [Configuración de Neon](./NEON_SETUP.md)
+➡️ Ver [Ejemplos de API](./API_EXAMPLES.md)
+➡️ Volver al [README principal](../README.md)
 
 ---
 
 <div align="center">
 
-**¿Preguntas sobre la arquitectura?**  
+**¿Preguntas sobre la arquitectura?**
 [Abre un issue](https://github.com/marceloemmott-dev/retail-backend-api/issues)
 
 ---

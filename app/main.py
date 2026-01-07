@@ -38,25 +38,25 @@ app = FastAPI(
     title="🏪 Retail Backend API",
     description="""
     **Backend universal para negocios retail** - Sistema POS desacoplado y reutilizable
-    
+
     ## Características principales:
-    
+
     * ✅ **Gestión de productos** con código de barras
     * ✅ **Control de stock** automático
     * ✅ **Registro de ventas** con boletas internas
     * ✅ **Compras a proveedores** con actualización de stock
     * ✅ **Reportería** completa de ventas y stock
     * ✅ **Multi-punto de venta** (web, móvil, escritorio)
-    
+
     ## Tecnología:
-    
+
     - **Framework:** FastAPI
     - **Base de datos:** PostgreSQL (Neon serverless)
     - **ORM:** SQLAlchemy
     - **Documentación:** OpenAPI 3.0 (Swagger)
-    
+
     ## Documentación adicional:
-    
+
     - [Arquitectura del Sistema](./docs/ARCHITECTURE.md)
     - [Ejemplos de API](./docs/API_EXAMPLES.md)
     - [Setup de Neon DB](./docs/NEON_SETUP.md)

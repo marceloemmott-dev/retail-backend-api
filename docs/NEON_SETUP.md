@@ -30,10 +30,10 @@
 
 ### Para Proyectos de Portafolio
 
-✅ **Demuestra experiencia con cloud**: No solo código local  
-✅ **Production-ready**: Infraestructura real desde el inicio  
-✅ **Gratis para proyectos pequeños**: Sin costos ocultos  
-✅ **Fácil de mostrar**: Comparte tu proyecto funcionando  
+✅ **Demuestra experiencia con cloud**: No solo código local
+✅ **Production-ready**: Infraestructura real desde el inicio
+✅ **Gratis para proyectos pequeños**: Sin costos ocultos
+✅ **Fácil de mostrar**: Comparte tu proyecto funcionando
 
 ### Ventajas Técnicas
 
@@ -112,7 +112,7 @@ postgresql://[username]:[password]@[host]/[database]?sslmode=require
               Usuario    Password   Host    BD Name
 ```
 
-> ⚠️ **IMPORTANTE**: 
+> ⚠️ **IMPORTANTE**:
 > - Guarda esta string de forma **segura**
 > - Nunca la compartas públicamente
 > - Nunca la subas a GitHub en `.env`
@@ -266,25 +266,25 @@ Si ya tiene otros parámetros:
 
 ### 🔒 Seguridad
 
-✅ **NUNCA** subas `.env` a GitHub  
-✅ Usa `.gitignore` para excluir archivos sensibles  
-✅ Rota passwords periódicamente  
-✅ Usa variables de entorno en producción  
-✅ Limita acceso por IP si es posible (en plan Pro)  
+✅ **NUNCA** subas `.env` a GitHub
+✅ Usa `.gitignore` para excluir archivos sensibles
+✅ Rota passwords periódicamente
+✅ Usa variables de entorno en producción
+✅ Limita acceso por IP si es posible (en plan Pro)
 
 ### ⚡ Rendimiento
 
-✅ **Connection pooling**: Usa SQLAlchemy pool  
-✅ **Índices**: Crea índices en columnas frecuentes  
-✅ **Cierra conexiones**: No dejes conexiones abiertas  
-✅ **Prepared statements**: SQLAlchemy lo hace automáticamente  
+✅ **Connection pooling**: Usa SQLAlchemy pool
+✅ **Índices**: Crea índices en columnas frecuentes
+✅ **Cierra conexiones**: No dejes conexiones abiertas
+✅ **Prepared statements**: SQLAlchemy lo hace automáticamente
 
 ### 💰 Optimización de Recursos (Free Tier)
 
-✅ **Monitora almacenamiento**: Solo tienes 3GB  
-✅ **Limpia datos de prueba**: No ocupes espacio innecesario  
-✅ **Usa branches**: Para testing sin afectar main  
-✅ **Revisa métricas**: Dashboard → Metrics  
+✅ **Monitora almacenamiento**: Solo tienes 3GB
+✅ **Limpia datos de prueba**: No ocupes espacio innecesario
+✅ **Usa branches**: Para testing sin afectar main
+✅ **Revisa métricas**: Dashboard → Metrics
 
 ---
 
@@ -369,33 +369,33 @@ Sí, hay varias opciones:
 
 ### ¿Es confiable para producción?
 
-✅ Sí, usado por miles de empresas  
-✅ SLA del 99.9% (en plan Pro)  
-✅ Backups automáticos  
-✅ Monitoreo 24/7  
+✅ Sí, usado por miles de empresas
+✅ SLA del 99.9% (en plan Pro)
+✅ Backups automáticos
+✅ Monitoreo 24/7
 
 ### ¿Puedo usar con ORMs?
 
-✅ SQLAlchemy (Python) - **Este proyecto**  
-✅ Prisma (Node.js)  
-✅ Django ORM (Python)  
-✅ TypeORM (TypeScript)  
-✅ Cualquier driver PostgreSQL estándar  
+✅ SQLAlchemy (Python) - **Este proyecto**
+✅ Prisma (Node.js)
+✅ Django ORM (Python)
+✅ TypeORM (TypeScript)
+✅ Cualquier driver PostgreSQL estándar
 
 ---
 
 ## Próximos Pasos
 
-✅ Configuraste Neon exitosamente  
-➡️ Continúa con [Arquitectura del Proyecto](./ARCHITECTURE.md)  
-➡️ Ver [Ejemplos de API](./API_EXAMPLES.md)  
-➡️ Volver al [README principal](../README.md)  
+✅ Configuraste Neon exitosamente
+➡️ Continúa con [Arquitectura del Proyecto](./ARCHITECTURE.md)
+➡️ Ver [Ejemplos de API](./API_EXAMPLES.md)
+➡️ Volver al [README principal](../README.md)
 
 ---
 
 <div align="center">
 
-**¿Problemas con la configuración?**  
+**¿Problemas con la configuración?**
 [Abre un issue](https://github.com/marceloemmott-dev/retail-backend-api/issues) y te ayudaremos
 
 ---

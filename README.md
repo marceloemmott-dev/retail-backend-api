@@ -13,7 +13,7 @@
 [![Dependency Review](https://github.com/marceloemmott-dev/retail-backend-api/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/marceloemmott-dev/retail-backend-api/actions/workflows/dependency-review.yml)
 
 > [!IMPORTANT]
-> **🚀 Este proyecto utiliza infraestructura REAL en producción**  
+> **🚀 Este proyecto utiliza infraestructura REAL en producción**
 > La base de datos PostgreSQL está desplegada y activa en [Neon](https://neon.tech/) (serverless cloud), no es una configuración local o de ejemplo. Esto demuestra un enfoque profesional con servicios en la nube listos para escalar.
 
 ### 📚 Documentación Completa Disponible
@@ -490,7 +490,7 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE)
 
 ### ⭐ Si este proyecto te fue útil, considera darle una estrella en GitHub ⭐
 
-**¿Tienes sugerencias o encontraste un bug?**  
+**¿Tienes sugerencias o encontraste un bug?**
 [Abre un issue](https://github.com/marceloemmott-dev/retail-backend-api/issues) o envía un pull request
 
 ---

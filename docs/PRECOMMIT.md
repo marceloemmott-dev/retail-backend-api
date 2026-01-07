@@ -202,9 +202,9 @@ git commit -m "Add feature"
 # 🎨 Format code with Black...................................Failed
 # - hook id: black
 # - files were modified by this hook
-# 
+#
 # reformatted app/main.py
-# 
+#
 # All done! ✨ 🍰 ✨
 # 1 file reformatted.
 
@@ -297,7 +297,7 @@ pip install types-all
 
 **Causa:** Safety consulta base de datos online
 
-**Solución:** 
+**Solución:**
 ```yaml
 # Deshabilitar temporalmente en .pre-commit-config.yaml
 # Comentar el hook de safety
@@ -476,16 +476,16 @@ Generalmente **5-15 segundos**. Mucho menos que esperar CI (3-5 min).
 
 ## Próximos Pasos
 
-✅ Ya instalaste pre-commit  
-✅ Ya entiendes cómo funciona  
-➡️ Ahora: Commitea con confianza  
-➡️ Luego: Personaliza hooks según necesites  
+✅ Ya instalaste pre-commit
+✅ Ya entiendes cómo funciona
+➡️ Ahora: Commitea con confianza
+➡️ Luego: Personaliza hooks según necesites
 
 ---
 
 <div align="center">
 
-**¿Dudas sobre pre-commit?**  
+**¿Dudas sobre pre-commit?**
 [Abre un issue](https://github.com/marceloemmott-dev/retail-backend-api/issues)
 
 ---

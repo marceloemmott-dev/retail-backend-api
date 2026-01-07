@@ -669,16 +669,16 @@ curl "http://localhost:8000/products/barcode/7790001234567"
 
 ## Próximos Pasos
 
-✅ Ya conoces la API  
-➡️ Ver [Arquitectura del Sistema](./ARCHITECTURE.md)  
-➡️ Ver [Configuración de Neon](./NEON_SETUP.md)  
-➡️ Volver al [README principal](../README.md)  
+✅ Ya conoces la API
+➡️ Ver [Arquitectura del Sistema](./ARCHITECTURE.md)
+➡️ Ver [Configuración de Neon](./NEON_SETUP.md)
+➡️ Volver al [README principal](../README.md)
 
 ---
 
 <div align="center">
 
-**¿Necesitas más ejemplos?**  
+**¿Necesitas más ejemplos?**
 [Abre un issue](https://github.com/marceloemmott-dev/retail-backend-api/issues)
 
 ---
