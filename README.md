@@ -292,6 +292,30 @@ sequenceDiagram
  - ✅ Inyección de dependencias (`deps.py`)
  - ✅ Manejo de errores (404, 409)
 
+ ### ⚡ Flujo de API: Crear Nueva Marca
+
+ ```mermaid
+ sequenceDiagram
+     participant Client
+     participant API as FastAPI (Router)
+     participant Service as BrandService
+     participant DB as PostgreSQL
+
+     Client->>API: POST /brands {name: "Nike"}
+     API->>Service: create_brand(db, "Nike")
+     Service->>DB: INSERT INTO brands (name="Nike")
+
+     alt Nombre ya existe
+         DB-->>Service: IntegrityError (UniqueViolation)
+         Service-->>API: Raise ValueError
+         API-->>Client: 409 Conflict
+     else Éxito
+         DB-->>Service: Success
+         Service-->>API: Return Brand Object
+         API-->>Client: 201 Created {id: 1, name: "Nike"}
+     end
+ ```
+
  **🔗 Endpoints Disponibles (Ya funcionales):**
 
  | Método | Endpoint | Descripción | Estado |
@@ -351,8 +375,8 @@ gantt
     Configuración PostgreSQL   :done, db, 2026-01-06, 1d
 
     section Fase 2: Entidades Básicas
-    ✅ Brand Model              :active, brand, 2026-01-07, 2d
-    Product Model              :product, after brand, 3d
+    ✅ Brand API Complete       :done, brand, 2026-01-07, 2d
+    Product Model              :active, product, 2026-01-09, 3d
     Provider Model             :provider, after product, 2d
 
     section Fase 3: Lógica de Negocio
@@ -368,9 +392,9 @@ gantt
 
 **🎯 Hitos Clave:**
 - ✅ **Fase 1 Completada** (07/01/2026): Infraestructura profesional lista
-- 🔄 **Fase 2 En Progreso** (09/01/2026): Primera entidad implementada (Brand)
-- 🔜 **Fase 3 Planificada** (20/01/2026): Lógica de compras y ventas
-- 📅 **Fase 4 Futura** (01/02/2026): Autenticación y reportes
+- ✅ **Fase 2 Iniciada** (07/01/2026): Primera entidad (Brand) **100% Implementada**
+- 🔄 **Próximo Paso** (09/01/2026): Implementación de Productos
+- 📅 **Fase 3 Planificada** (20/01/2026): Lógica de compras y ventas
 
 ---
 
@@ -579,7 +603,7 @@ Una vez el servidor esté corriendo, puedes acceder a la documentación interact
 ### 📘 Swagger UI (Recomendado)
 👉 **http://localhost:8000/docs**
 
-### � ReDoc
+###  ReDoc
 👉 **http://localhost:8000/redoc**
 
 Ambas interfaces permiten:
@@ -661,39 +685,6 @@ El sistema está pensado para permitir:
 - 📅 Análisis por períodos de tiempo
 
 Toda esta información se expone mediante **endpoints listos** para ser consumidos por un dashboard web en el futuro.
-
----
-
-## 🔜 Roadmap
-
-### ✅ Fase 1: Fundamentos (Completado)
-- [x] Estructura base profesional
-- [x] Configuración DEV / PROD
-- [x] Conexión real a base de datos en la nube (Neon)
-- [x] Documentación automática (Swagger)
-
-### � Fase 2: Modelos y Persistencia (En Progreso)
-- [ ] Crear modelos de dominio (Brand, Product, Provider, etc.)
-- [ ] Implementar migraciones con Alembic
-- [ ] Persistencia real en PostgreSQL
-
-### 📅 Fase 3: Endpoints de Negocio (Próximamente)
-- [ ] CRUD de productos y marcas
-- [ ] Gestión de compras y proveedores
-- [ ] Sistema de ventas y boletas
-- [ ] Control de stock automático
-
-### 📅 Fase 4: Reportería Avanzada
-- [ ] Endpoints de reportes
-- [ ] Análisis de ventas
-- [ ] Estadísticas de stock
-- [ ] Historial de compras
-
-### 📅 Fase 5: Producción
-- [ ] Despliegue en producción
-- [ ] CI/CD
-- [ ] Monitoreo y logs
-- [ ] Tests automatizados
 
 ---
 
