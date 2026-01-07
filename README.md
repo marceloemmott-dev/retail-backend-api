@@ -271,41 +271,36 @@ sequenceDiagram
 
 ## 🏷️ Entidades del Sistema
 
-### ✅ Brand (Marca) - MODELO IMPLEMENTADO
+### ✅ Brand (Marca) - MODELO & API IMPLEMENTADOS ✅
 
-La primera entidad del sistema. **Estado actual: Solo modelo de base de datos, endpoints pendientes.**
+ La primera entidad del sistema completamente funcional.
 
-**📋 Modelo SQLAlchemy (✅ IMPLEMENTADO):**
+ **📋 Modelo SQLAlchemy (✅ IMPLEMENTADO):**
 
-```python
-class Brand(Base):
-    __tablename__ = "brands"
+ ```python
+ class Brand(Base):
+     __tablename__ = "brands"
 
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(100), nullable=False, unique=True)
-```
+     id = Column(Integer, primary_key=True, index=True)
+     name = Column(String(100), nullable=False, unique=True)
+ ```
 
-**✅ Lo que YA está:**
-- ✅ Modelo SQLAlchemy definido
-- ✅ Tabla creada automáticamente en startup
-- ✅ Validaciones (unique, nullable)
-- ✅ Integrado con el sistema
+ **✅ Funcionalidad Completa:**
+ - ✅ Modelo SQLAlchemy
+ - ✅ Schemas Pydantic con validación y ejemplos (Swagger UI)
+ - ✅ Router con endpoints RESTful
+ - ✅ Inyección de dependencias (`deps.py`)
+ - ✅ Manejo de errores (404, 409)
 
-**🔜 Lo que FALTA (próximos pasos):**
-- 🔜 Schemas Pydantic (request/response)
-- 🔜 Router con endpoints REST
-- 🔜 CRUD operations
-- 🔜 Validaciones de negocio
+ **🔗 Endpoints Disponibles (Ya funcionales):**
 
-**🎯 Endpoints Planificados:**
-
-| Método | Endpoint | Descripción | Estado |
-|--------|----------|-------------|--------|
-| `GET` | `/brands` | Listar todas las marcas | 🔜 Pendiente |
-| `POST` | `/brands` | Crear nueva marca | 🔜 Pendiente |
-| `GET` | `/brands/{id}` | Obtener marca por ID | 🔜 Pendiente |
-| `PUT` | `/brands/{id}` | Actualizar marca | 🔜 Pendiente |
-| `DELETE` | `/brands/{id}` | Eliminar marca | 🔜 Pendiente |
+ | Método | Endpoint | Descripción | Estado |
+ |--------|----------|-------------|--------|
+ | `GET` | `/brands` | Listar todas las marcas | ✅ Listo |
+ | `POST` | `/brands` | Crear nueva marca | ✅ Listo |
+ | `GET` | `/brands/{id}` | Obtener marca por ID | ✅ Listo |
+ | `PUT` | `/brands/{id}` | Actualizar marca | ✅ Listo |
+ | `DELETE` | `/brands/{id}` | Eliminar marca | ✅ Listo |
 
 **💡 Ejemplo de Uso (Cuando esté implementado):**
 

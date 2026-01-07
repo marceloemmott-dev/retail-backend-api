@@ -8,6 +8,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.database import create_tables
+from app.routers.brand import router as brand_router
 
 # Metadata para documentación Swagger/OpenAPI
 tags_metadata = [
@@ -120,3 +121,7 @@ def detailed_health():
 @app.on_event("startup")
 def on_startup():
     create_tables()
+
+
+# 👇 AQUÍ SE REGISTRA EL ROUTER
+app.include_router(brand_router)
