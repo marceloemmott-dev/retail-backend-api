@@ -11,9 +11,19 @@
 [![CI](https://github.com/marceloemmott-dev/retail-backend-api/actions/workflows/ci.yml/badge.svg)](https://github.com/marceloemmott-dev/retail-backend-api/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/marceloemmott-dev/retail-backend-api/actions/workflows/codeql.yml/badge.svg)](https://github.com/marceloemmott-dev/retail-backend-api/actions/workflows/codeql.yml)
 [![Dependency Review](https://github.com/marceloemmott-dev/retail-backend-api/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/marceloemmott-dev/retail-backend-api/actions/workflows/dependency-review.yml)
+[![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://pre-commit.com/)
+
+### 📊 Estado del Proyecto
+
+![Status](https://img.shields.io/badge/Status-In%20Development-yellow?style=for-the-badge)
+![Progress](https://img.shields.io/badge/Progress-Phase%201-blue?style=for-the-badge)
+![Entities](https://img.shields.io/badge/Entities-1%2F7%20Completed-success?style=for-the-badge)
+![Coverage](https://img.shields.io/badge/Test%20Coverage-Coming%20Soon-orange?style=for-the-badge)
+
+**🎯 Progreso Actual:** Fundación completada + Primera entidad implementada (Brand)
 
 > [!IMPORTANT]
-> **🚀 Este proyecto utiliza infraestructura REAL en producción**  
+> **🚀 Este proyecto utiliza infraestructura REAL en producción**
 > La base de datos PostgreSQL está desplegada y activa en [Neon](https://neon.tech/) (serverless cloud), no es una configuración local o de ejemplo. Esto demuestra un enfoque profesional con servicios en la nube listos para escalar.
 
 ### 📚 Documentación Completa Disponible
@@ -137,16 +147,267 @@ Esto permite que el sistema sea **escalable, mantenible y profesional**, incluso
 
 ---
 
+## 📊 Visualización del Sistema
+
+### 🏗️ Diagrama de Arquitectura
+
+```mermaid
+graph TB
+    subgraph "👥 Clientes"
+        A[🖥️ POS Desktop]
+        B[🌐 Panel Web]
+        C[📱 App Móvil]
+    end
+
+    subgraph "🚀 Backend API"
+        D[FastAPI<br/>REST API]
+        E[SQLAlchemy<br/>ORM]
+        F[Business Logic]
+    end
+
+    subgraph "💾 Base de Datos"
+        G[(PostgreSQL<br/>Neon Serverless)]
+    end
+
+    subgraph "🔧 DevOps"
+        H[GitHub Actions<br/>CI/CD]
+        I[Pre-commit<br/>Hooks]
+    end
+
+    A --> D
+    B --> D
+    C --> D
+    D --> F
+    F --> E
+    E --> G
+    H -.->|Deploy| D
+    I -.->|Quality Checks| D
+
+    style D fill:#009688,color:#fff
+    style G fill:#4169E1,color:#fff
+    style H fill:#2088FF,color:#fff
+    style I fill:#brightgreen,color:#fff
+```
+
+### 🗂️ Modelo de Datos (EN DESARROLLO)
+
+```mermaid
+erDiagram
+    BRAND ||--o{ PRODUCT : "tiene"
+    PROVIDER ||--o{ PURCHASE : "vende"
+    PRODUCT ||--o{ PURCHASE_ITEM : "incluye"
+    PRODUCT ||--o{ SALE_ITEM : "se vende en"
+    PURCHASE ||--|{ PURCHASE_ITEM : "contiene"
+    SALE ||--|{ SALE_ITEM : "contiene"
+    USER ||--o{ SALE : "registra"
+
+    BRAND {
+        int id PK "✅ IMPLEMENTADO"
+        string name UK "✅ IMPLEMENTADO"
+        datetime created_at
+    }
+
+    PRODUCT {
+        int id PK "🔜 Próximo"
+        string name
+        string barcode UK
+        int brand_id FK
+        decimal price
+        int stock
+    }
+
+    PROVIDER {
+        int id PK "🔜 Planificado"
+        string name
+        string contact
+    }
+
+    PURCHASE {
+        int id PK "🔜 Planificado"
+        int provider_id FK
+        datetime date
+        decimal total
+    }
+
+    SALE {
+        int id PK "🔜 Planificado"
+        int user_id FK
+        datetime date
+        decimal total
+        string payment_method
+    }
+```
+
+### 🔄 Flujo de Ejemplo: Registro de Venta
+
+```mermaid
+sequenceDiagram
+    participant U as 👤 Usuario/Cajero
+    participant API as 🚀 FastAPI Backend
+    participant DB as 💾 PostgreSQL
+
+    U->>API: POST /sales <br/>{products, quantities}
+    activate API
+
+    API->>DB: SELECT stock FROM products
+    DB-->>API: stock_actual
+
+    alt Stock suficiente
+        API->>DB: BEGIN TRANSACTION
+        API->>DB: INSERT INTO sales
+        API->>DB: INSERT INTO sale_items
+        API->>DB: UPDATE products SET stock
+        API->>DB: COMMIT
+        DB-->>API: ✅ Venta registrada
+        API-->>U: 200 OK + Boleta
+    else Stock insuficiente
+        API-->>U: 400 Bad Request<br/>❌ Stock insuficiente
+    end
+
+    deactivate API
+```
+
+---
+
+## 🏷️ Entidades del Sistema
+
+### ✅ Brand (Marca) - MODELO & API IMPLEMENTADOS ✅
+
+ La primera entidad del sistema completamente funcional.
+
+ **📋 Modelo SQLAlchemy (✅ IMPLEMENTADO):**
+
+ ```python
+ class Brand(Base):
+     __tablename__ = "brands"
+
+     id = Column(Integer, primary_key=True, index=True)
+     name = Column(String(100), nullable=False, unique=True)
+ ```
+
+ **✅ Funcionalidad Completa:**
+ - ✅ Modelo SQLAlchemy
+ - ✅ Schemas Pydantic con validación y ejemplos (Swagger UI)
+ - ✅ Router con endpoints RESTful
+ - ✅ Inyección de dependencias (`deps.py`)
+ - ✅ Manejo de errores (404, 409)
+
+ ### ⚡ Flujo de API: Crear Nueva Marca
+
+ ```mermaid
+ sequenceDiagram
+     participant Client
+     participant API as FastAPI (Router)
+     participant Service as BrandService
+     participant DB as PostgreSQL
+
+     Client->>API: POST /brands {name: "Nike"}
+     API->>Service: create_brand(db, "Nike")
+     Service->>DB: INSERT INTO brands (name="Nike")
+
+     alt Nombre ya existe
+         DB-->>Service: IntegrityError (UniqueViolation)
+         Service-->>API: Raise ValueError
+         API-->>Client: 409 Conflict
+     else Éxito
+         DB-->>Service: Success
+         Service-->>API: Return Brand Object
+         API-->>Client: 201 Created {id: 1, name: "Nike"}
+     end
+ ```
+
+ **🔗 Endpoints Disponibles (Ya funcionales):**
+
+ | Método | Endpoint | Descripción | Estado |
+ |--------|----------|-------------|--------|
+ | `GET` | `/brands` | Listar todas las marcas | ✅ Listo |
+ | `POST` | `/brands` | Crear nueva marca | ✅ Listo |
+ | `GET` | `/brands/{id}` | Obtener marca por ID | ✅ Listo |
+ | `PUT` | `/brands/{id}` | Actualizar marca | ✅ Listo |
+ | `DELETE` | `/brands/{id}` | Eliminar marca | ✅ Listo |
+
+**💡 Ejemplo de Uso (Cuando esté implementado):**
+
+```json
+POST /brands
+Content-Type: application/json
+
+{
+  "name": "Coca-Cola"
+}
+
+Response 201 Created:
+{
+  "id": 1,
+  "name": "Coca-Cola"
+}
+```
+
+**🎯 Por qué empezar con Brand:**
+- Entidad fundamental y simple (ideal para validar el stack)
+- No tiene dependencias de otras entidades
+- Permite probar: ORM, migraciones, endpoints REST, validación
+- Base para la entidad `Product` que viene a continuación
+
+### 🔜 Próximas Entidades
+
+| Entidad | Estado | Prioridad | Descripción |
+|---------|--------|-----------|-------------|
+| **Product** | 🔜 Próximo | Alta | Productos del catálogo |
+| **Provider** | 📋 Planificado | Media | Proveedores del negocio |
+| **Purchase** | 📋 Planificado | Media | Compras a proveedores |
+| **Sale** | 📋 Planificado | Alta | Ventas registradas |
+| **User** | 📋 Planificado | Alta | Usuarios del sistema |
+| **Stock Movement** | 📋 Planificado | Baja | Auditoría de movimientos |
+
+---
+
+## 🗺️ Roadmap del Proyecto
+
+```mermaid
+gantt
+    title 🚀 Desarrollo Retail Backend API
+    dateFormat  YYYY-MM-DD
+
+    section Fase 1: Fundación
+    Estructura del Proyecto     :done, foundation, 2026-01-01, 5d
+    CI/CD + Pre-commit         :done, cicd, 2026-01-05, 2d
+    Configuración PostgreSQL   :done, db, 2026-01-06, 1d
+
+    section Fase 2: Entidades Básicas
+    ✅ Brand API Complete       :done, brand, 2026-01-07, 2d
+    Product Model              :active, product, 2026-01-09, 3d
+    Provider Model             :provider, after product, 2d
+
+    section Fase 3: Lógica de Negocio
+    Purchase Module            :purchase, after provider, 4d
+    Stock Management           :stock, after purchase, 3d
+    Sale Module                :sale, after stock, 5d
+
+    section Fase 4: Features Avanzadas
+    User Authentication        :auth, after sale, 4d
+    Reporting & Analytics      :reports, after auth, 5d
+    Testing & Coverage         :tests, after reports, 3d
+```
+
+**🎯 Hitos Clave:**
+- ✅ **Fase 1 Completada** (07/01/2026): Infraestructura profesional lista
+- ✅ **Fase 2 Iniciada** (07/01/2026): Primera entidad (Brand) **100% Implementada**
+- 🔄 **Próximo Paso** (09/01/2026): Implementación de Productos
+- 📅 **Fase 3 Planificada** (20/01/2026): Lógica de compras y ventas
+
+---
+
 ## 🛠️ Stack Tecnológico
 
 | Tecnología | Descripción |
 |------------|-------------|
 | **[FastAPI](https://fastapi.tiangolo.com/)** | Framework moderno y de alto rendimiento para construir APIs |
-| **[Python 3.11+](https://www.python.org/)** | Lenguaje de programación principal |
+| **[Python 3.12](https://www.python.org/)** | Lenguaje de programación principal (versión específica requerida) |
 | **[SQLAlchemy](https://www.sqlalchemy.org/)** | ORM para manejo de la base de datos |
 | **[PostgreSQL](https://www.postgresql.org/)** | Base de datos relacional |
 | **[Neon](https://neon.tech/)** | PostgreSQL serverless en la nube |
-| **[Alembic](https://alembic.sqlalchemy.org/)** | Herramienta de migraciones de base de datos |
+| **[Alembic](https://alembic.sqlalchemy.org/)** | 🔜 **Planificado** - Migraciones de base de datos |
 | **[Pydantic](https://docs.pydantic.dev/)** | Validación de datos y schemas |
 | **[Uvicorn](https://www.uvicorn.org/)** | Servidor ASGI de alto rendimiento |
 | **[Swagger/OpenAPI](https://swagger.io/)** | Documentación automática de la API |
@@ -342,7 +603,7 @@ Una vez el servidor esté corriendo, puedes acceder a la documentación interact
 ### 📘 Swagger UI (Recomendado)
 👉 **http://localhost:8000/docs**
 
-### � ReDoc
+###  ReDoc
 👉 **http://localhost:8000/redoc**
 
 Ambas interfaces permiten:
@@ -427,39 +688,6 @@ Toda esta información se expone mediante **endpoints listos** para ser consumid
 
 ---
 
-## 🔜 Roadmap
-
-### ✅ Fase 1: Fundamentos (Completado)
-- [x] Estructura base profesional
-- [x] Configuración DEV / PROD
-- [x] Conexión real a base de datos en la nube (Neon)
-- [x] Documentación automática (Swagger)
-
-### � Fase 2: Modelos y Persistencia (En Progreso)
-- [ ] Crear modelos de dominio (Brand, Product, Provider, etc.)
-- [ ] Implementar migraciones con Alembic
-- [ ] Persistencia real en PostgreSQL
-
-### 📅 Fase 3: Endpoints de Negocio (Próximamente)
-- [ ] CRUD de productos y marcas
-- [ ] Gestión de compras y proveedores
-- [ ] Sistema de ventas y boletas
-- [ ] Control de stock automático
-
-### 📅 Fase 4: Reportería Avanzada
-- [ ] Endpoints de reportes
-- [ ] Análisis de ventas
-- [ ] Estadísticas de stock
-- [ ] Historial de compras
-
-### 📅 Fase 5: Producción
-- [ ] Despliegue en producción
-- [ ] CI/CD
-- [ ] Monitoreo y logs
-- [ ] Tests automatizados
-
----
-
 ## 👤 Autor
 
 Desarrollado con ❤️ como proyecto de portafolio profesional
@@ -490,7 +718,7 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE)
 
 ### ⭐ Si este proyecto te fue útil, considera darle una estrella en GitHub ⭐
 
-**¿Tienes sugerencias o encontraste un bug?**  
+**¿Tienes sugerencias o encontraste un bug?**
 [Abre un issue](https://github.com/marceloemmott-dev/retail-backend-api/issues) o envía un pull request
 
 ---

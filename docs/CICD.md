@@ -438,7 +438,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: test  # Solo deploy si tests pasan
-    
+
     steps:
       - name: Deploy to Render/Railway/etc
         run: |
@@ -456,7 +456,7 @@ jobs:
 
 ---
 
-**¿Preguntas sobre CI/CD?**  
+**¿Preguntas sobre CI/CD?**
 [Abre un issue](https://github.com/marceloemmott-dev/retail-backend-api/issues)
 
 ---
