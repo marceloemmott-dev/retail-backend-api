@@ -9,30 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.database import create_tables
 from app.routers.brand import router as brand_router
-
-# Metadata para documentación Swagger/OpenAPI
-tags_metadata = [
-    {
-        "name": "Health",
-        "description": "Endpoints de salud y status del sistema",
-    },
-    {
-        "name": "Products",
-        "description": "Gestión de productos, precios y stock",
-    },
-    {
-        "name": "Sales",
-        "description": "Registro y consulta de ventas",
-    },
-    {
-        "name": "Purchases",
-        "description": "Gestión de compras y proveedores",
-    },
-    {
-        "name": "Reports",
-        "description": "Reportería y analytics",
-    },
-]
+from app.routers.product import router as product_router
 
 # Inicializar FastAPI con metadata completa
 app = FastAPI(
@@ -72,7 +49,6 @@ app = FastAPI(
         "name": "MIT License",
         "url": "https://opensource.org/licenses/MIT",
     },
-    openapi_tags=tags_metadata,
     docs_url="/docs",
     redoc_url="/redoc",
 )
@@ -125,3 +101,4 @@ def on_startup():
 
 # 👇 AQUÍ SE REGISTRA EL ROUTER
 app.include_router(brand_router)
+app.include_router(product_router)

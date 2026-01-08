@@ -349,11 +349,47 @@ Response 201 Created:
 - Permite probar: ORM, migraciones, endpoints REST, validación
 - Base para la entidad `Product` que viene a continuación
 
+### ✅ Product (Producto) - MODELO & API IMPLEMENTADOS ✅
+
+### ✅ Product (Producto) - MODELO & API IMPLEMENTADOS ✅
+
+> 📘 **[Ver Documentación Completa y Diagramas de Product](./docs/ENTITIES/PRODUCT.md)**
+
+Entidad central del sistema. Maneja el catálogo de productos, precios y stock.
+
+**📋 Modelo SQLAlchemy (✅ IMPLEMENTADO):**
+
+```python
+class Product(Base):
+    __tablename__ = "products"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(150), nullable=False)
+    sku = Column(String(50), unique=True, nullable=True)
+    price = Column(Numeric(10, 2), nullable=False)
+    brand_id = Column(Integer, ForeignKey("brands.id"), nullable=False)
+```
+
+**✅ Funcionalidad Completa:**
+- ✅ Modelo SQLAlchemy (Relación con Brand)
+- ✅ Schemas Pydantic con validación (Decimal, Optional)
+- ✅ Router CRUD completo
+- ✅ Documentación Swagger detallada (404, 409)
+
+**🔗 Endpoints Disponibles:**
+
+| Método | Endpoint | Descripción | Estado |
+|--------|----------|-------------|--------|
+| `POST` | `/products` | Crear producto | ✅ Listo |
+| `GET` | `/products` | Listar productos | ✅ Listo |
+| `GET` | `/products/{id}` | Ver detalle | ✅ Listo |
+| `PUT` | `/products/{id}` | Actualizar | ✅ Listo |
+| `DELETE` | `/products/{id}` | Eliminar | ✅ Listo |
+
 ### 🔜 Próximas Entidades
 
 | Entidad | Estado | Prioridad | Descripción |
 |---------|--------|-----------|-------------|
-| **Product** | 🔜 Próximo | Alta | Productos del catálogo |
 | **Provider** | 📋 Planificado | Media | Proveedores del negocio |
 | **Purchase** | 📋 Planificado | Media | Compras a proveedores |
 | **Sale** | 📋 Planificado | Alta | Ventas registradas |
@@ -376,8 +412,8 @@ gantt
 
     section Fase 2: Entidades Básicas
     ✅ Brand API Complete       :done, brand, 2026-01-07, 2d
-    Product Model              :active, product, 2026-01-09, 3d
-    Provider Model             :provider, after product, 2d
+    ✅ Product API Complete     :done, product, 2026-01-08, 2d
+    Provider Model             :active, provider, after product, 2d
 
     section Fase 3: Lógica de Negocio
     Purchase Module            :purchase, after provider, 4d
@@ -393,8 +429,8 @@ gantt
 **🎯 Hitos Clave:**
 - ✅ **Fase 1 Completada** (07/01/2026): Infraestructura profesional lista
 - ✅ **Fase 2 Iniciada** (07/01/2026): Primera entidad (Brand) **100% Implementada**
-- 🔄 **Próximo Paso** (09/01/2026): Implementación de Productos
-- 📅 **Fase 3 Planificada** (20/01/2026): Lógica de compras y ventas
+- ✅ **Product API** (08/01/2026): Catálogo de productos con Soft Delete y Validaciones
+- 🔄 **Próximo Paso**: Implementación de Proveedores (Providers)
 
 ---
 
