@@ -189,7 +189,9 @@ graph TB
     style I fill:#brightgreen,color:#fff
 ```
 
-### 🗂️ Modelo de Datos (EN DESARROLLO)
+### 🗂️ Modelo de Datos (✅ FASE 2: Brand & Product IMPLEMENTADOS)
+
+> 🎉 **Hito Importante:** Las entidades core del sistema (**Brand** y **Product**) están completamente implementadas con validaciones, relaciones y soft delete.
 
 ```mermaid
 erDiagram
@@ -208,12 +210,15 @@ erDiagram
     }
 
     PRODUCT {
-        int id PK "🔜 Próximo"
-        string name
-        string barcode UK
-        int brand_id FK
-        decimal price
-        int stock
+        int id PK "✅ IMPLEMENTADO"
+        string name "✅ IMPLEMENTADO"
+        string sku UK "✅ IMPLEMENTADO"
+        string code UK "✅ IMPLEMENTADO (Barcode)"
+        int brand_id FK "✅ IMPLEMENTADO"
+        decimal price "✅ IMPLEMENTADO"
+        string image_url "✅ IMPLEMENTADO"
+        boolean is_active "✅ Soft Delete"
+        datetime created_at "✅ IMPLEMENTADO"
     }
 
     PROVIDER {
